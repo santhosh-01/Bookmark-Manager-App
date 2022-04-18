@@ -19,8 +19,8 @@ object StringConstant {
     val quitMessage: String = outputDesigner.getModifiedString(" Thank you for using the application ", '-')
     val logoutMessage: String = outputDesigner.getModifiedString(" User logged out successfully ", '-')
     val nonIntegerMessage: String = outputDesigner.getModifiedString(" User logged out successfully ", '-')
-    val invalidCategoryId: String = outputDesigner.getModifiedString(" You have entered invalid category id ", '-')
-    val invalidBookmarkId: String = outputDesigner.getModifiedString(" You have entered invalid bookmark id ", '-')
+    val invalidCategoryId: String = outputDesigner.getModifiedString(" You have entered invalid category id ", 'x')
+    val invalidBookmarkId: String = outputDesigner.getModifiedString(" You have entered invalid bookmark id ", 'x')
     val passwordChangedSuccessMessage: String = outputDesigner.getModifiedString(
         " Password Changed Successfully ", '-')
 }

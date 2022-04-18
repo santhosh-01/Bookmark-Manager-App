@@ -4,6 +4,7 @@ import core.Bookmark
 import core.BookmarkManagement
 import core.StringConstant
 import util.OutputDesigner
+import validation.IntegerValidator
 
 class BookmarkMenu(private val bookmarkManagement: BookmarkManagement) {
 
@@ -22,7 +23,7 @@ class BookmarkMenu(private val bookmarkManagement: BookmarkManagement) {
     fun navigateAndGetChoice(catId: Int): Int {
         outer@while (true) {
             showMenu()
-            val choice: Int = validateAndGetChoice()
+            val choice: Int = IntegerValidator.validateInteger(1,4)
             if(choice == -1) continue
             if(choice == 1) {
                 var title: String
@@ -89,7 +90,7 @@ class BookmarkMenu(private val bookmarkManagement: BookmarkManagement) {
                         println(StringConstant.invalidBookmarkId)
                         continue
                     }
-                    print("\nBookmark id : ${bookmark.id}, URL : ${bookmark.url}")
+                    print("\nBookmark id : ${bookmark.id}, Bookmark Title : ${bookmark.title}, URL : ${bookmark.url}")
                     val desc: String? = bookmark.description
                     if(desc != null) {
                         print(", Description: $desc")
@@ -105,22 +106,5 @@ class BookmarkMenu(private val bookmarkManagement: BookmarkManagement) {
                 return -1
             }
         }
-    }
-
-    private fun validateAndGetChoice(): Int {
-        print("\nEnter your choice : ")
-        val choice: Int
-        try {
-            choice = Integer.parseInt(readLine())
-        }
-        catch (e: Exception) {
-            println("\nYou have entered non integers! Please Enter Valid choice (1 to 4) ")
-            return -1
-        }
-        if(choice < 1 || choice > 4) {
-            println("\nGiven choice is Invalid! Please Enter Valid choice (1 to 4) ")
-            return -1
-        }
-        return choice
     }
 }

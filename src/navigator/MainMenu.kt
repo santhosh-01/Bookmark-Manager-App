@@ -1,10 +1,10 @@
 package navigator
 
-import core.BookmarkManagement
 import core.Category
 import core.CategoryManagement
 import core.StringConstant
 import util.OutputDesigner
+import validation.IntegerValidator
 
 class MainMenu(private val categoryManagement: CategoryManagement) {
 
@@ -22,7 +22,7 @@ class MainMenu(private val categoryManagement: CategoryManagement) {
     fun navigateAndGetChoice(userId: Int): Int {
         outer@while (true) {
             showMenu()
-            val choice: Int = validateAndGetChoice()
+            val choice: Int = IntegerValidator.validateInteger(1,3)
             if(choice == -1) continue
             if(choice == 1) {
                 var categoryName: String
@@ -92,23 +92,6 @@ class MainMenu(private val categoryManagement: CategoryManagement) {
             }
             else if(choice == 3) return -1
         }
-    }
-
-    private fun validateAndGetChoice(): Int {
-        print("\nEnter your choice : ")
-        val choice: Int
-        try {
-            choice = Integer.parseInt(readLine())
-        }
-        catch (e: Exception) {
-            println("\nYou have entered non integers! Please Enter Valid choice (1 to 3) ")
-            return -1
-        }
-        if(choice < 1 || choice > 3) {
-            println("\nGiven choice is Invalid! Please Enter Valid choice (1 to 3) ")
-            return -1
-        }
-        return choice
     }
 
 }
