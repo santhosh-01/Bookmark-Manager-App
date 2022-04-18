@@ -1,0 +1,7 @@
+package input
+
+class InputHandler {
+
+
+
+}
